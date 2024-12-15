@@ -2,44 +2,50 @@ import pyautogui
 import pandas as pd
 import time
 
-
-
-#Iniciando a automação
 pyautogui.PAUSE = 0.5
+
+# Iniciando a automação
 pyautogui.press("win")
 pyautogui.write("chrome")
 pyautogui.press("enter")
 time.sleep(1)
 pyautogui.write("http://www.sauer.pro.br/python/automacao/index.html")
 pyautogui.press("enter")
-pyautogui.sleep(4)
+time.sleep(4)
 pyautogui.press("tab")  
 pyautogui.write("admin")
 pyautogui.press("tab")
 pyautogui.write("SimplificaPython")
+pyautogui.press("tab")
 pyautogui.press("enter")
 
-pyautogui.sleep(5)
-pyautogui.click(x=1147, y=688)
-pyautogui.write("Teste de nome")
-pyautogui.press("tab")
+time.sleep(5)
+pyautogui.click(x=731, y=491)
 
-#VARIAVEIS
-
+# Carregando a tabela
 tabela = pd.read_csv("alunos.csv")
 
 time.sleep(3)
 
 for linha in tabela.index:  
-    Lucas   lucas@email.com Avenida G, 987  (81) 23456-7890 
-    Giovana giovana@email.com
-    pyautogui.write(tabela.loc[linha, "Nome"])
+    nome = tabela.loc[linha,"Nome"]
+    pyautogui.write(str(nome))
     pyautogui.press("tab")
-    pyautogui.write(tabela.loc[linha, "Email"])
+    
+    email = tabela.loc[linha,"Email"]
+    pyautogui.write(str(email))
     pyautogui.press("tab")
-    pyautogui.write(tabela.loc[linha, "Endereco"])
+    
+    endereco = tabela.loc[linha,"Endereco"]
+    pyautogui.write(str(endereco))
     pyautogui.press("tab")
-    pyautogui.write(tabela.loc[linha, "Telefone"])
-    pyautogui.press("tab")Joo    
-    pyautogui.press("enter")C, 789  (51) 65432-1432 
-    F, 567  (71) 34567-8765
+    
+    telefone = tabela.loc[linha,"Telefone"]
+    pyautogui.write(str(telefone))
+    pyautogui.press("tab")    
+    
+    pyautogui.press("tab")
+    pyautogui.press("enter")
+    
+    # Corrigindo erro no scroll
+    pyautogui.scroll(5000) 
